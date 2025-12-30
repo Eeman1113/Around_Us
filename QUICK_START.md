@@ -1,216 +1,212 @@
-# 🌍 Around_Us
-## Complete Quick Start Guide
+# ✈️ Around_Us Flight Simulator
+## Quick Start Guide
 
-**Created by:** eeman majumder (eeman1113)
+Welcome, pilot! Let's get you in the air! 🛫
 
----
+## 🎯 What Is This?
 
-## 📦 What You Just Downloaded
+A **3D flight simulator** built with Cesium where you can:
+- ✈️ Fly a realistic aircraft
+- 🌍 Explore the entire 3D globe
+- 🏔️ Fly over real terrain and mountains
+- 🏙️ Navigate around 3D buildings
+- 📊 Track flight data in real-time
 
-A fun, simple 3D exploration game where you can walk around real cities in 3D!
-- ✅ No login required
-- ✅ No multiplayer complexity
-- ✅ No backend needed
-- ✅ **56+ cities across 6 continents**
-- ✅ Just play and explore!
+## 🚀 GET FLYING IN 2 STEPS!
 
----
-
-## 🚀 GET STARTED IN 2 STEPS!
-
-### Step 1: Install Dependencies (2 minutes)
+### Step 1: Install (2 minutes)
 ```bash
 npm install
 ```
 
-### Step 2: Play! (30 seconds)
+### Step 2: Take Off! (30 seconds)
 ```bash
 npm run dev
 ```
-The game opens automatically in your browser!
 
-**That's it!** No API keys, no registration, no credit card! 🎉
+Choose a location and click "TAKE OFF!" 🛫
 
----
+**That's it!** No API keys, no setup, just fly!
 
-## 🎮 CONTROLS
+## ✈️ FLIGHT CONTROLS
 
-- **W / Arrow Up** - Move forward
-- **S / Arrow Down** - Move backward
-- **A / Arrow Left** - Turn left
-- **D / Arrow Right** - Turn right
-- **SPACE** - Jump
+### Basic Flight
+- **W** - Pitch Down (nose down)
+- **S** - Pitch Up (nose up)
+- **A** - Roll Left (bank left)
+- **D** - Roll Right (bank right)
 
----
+### Advanced Controls
+- **Q** - Yaw Left (turn left)
+- **E** - Yaw Right (turn right)
+- **SHIFT** - Increase Throttle (speed up)
+- **CTRL** - Decrease Throttle (slow down)
 
-## 📍 EXPLORE 56+ CITIES WORLDWIDE!
+## 📊 HUD EXPLAINED
 
-Choose from cities across 6 continents:
+### Top Left - Airspeed
+- Measured in **knots** (kts)
+- Keep above 20 kts to stay airborne!
+- Cruise speed: 50-80 kts
 
-**🌎 North America** - New York, San Francisco, Las Vegas, Chicago, LA, Miami, and more!  
-**🌍 Europe** - Paris, London, Rome, Barcelona, Berlin, Amsterdam, Istanbul, and more!  
-**🌏 Asia** - Tokyo, Hong Kong, Dubai, Singapore, Seoul, Bangkok, Mumbai, and more!  
-**🌏 Oceania** - Sydney, Melbourne, Auckland  
-**🌎 South America** - Rio, São Paulo, Buenos Aires, Lima, Bogotá  
-**🌍 Africa** - Cape Town, Cairo, Nairobi, Lagos, Marrakech
+### Top Right - Altitude
+- Measured in **feet** (ft) above sea level
+- Starting altitude: 1,000 ft
+- Higher = better views!
 
-**Want more?** Add your own city! See `CUSTOMIZATION.md`
+### Middle Left - Orientation
+- **Heading:** Direction (0°=North, 90°=East, etc.)
+- **Pitch:** Nose angle (+ up, - down)
+- **Roll:** Wing tilt (+ right, - left)
 
----
+## 🌍 STARTING LOCATIONS
 
-## 📚 DOCUMENTATION
+Choose from 10 amazing places:
+- 🗽 **New York** - Fly over Manhattan!
+- 🗼 **Paris** - See the Eiffel Tower from above
+- 🗾 **Tokyo** - Navigate the megacity
+- 🏰 **London** - Circle the Tower Bridge
+- 🕌 **Dubai** - Fly by Burj Khalifa
+- 🌉 **San Francisco** - Under the Golden Gate?
+- 🏖️ **Sydney** - Coastal flying
+- 🏔️ **Rio** - Mountains meet ocean
+- 🦁 **Cape Town** - Table Mountain views
+- 🌃 **Singapore** - Island exploration
 
-We've included comprehensive guides:
+**Want more locations?** Check README.md to add your own!
 
-1. **START_HERE.txt** - You are here! Quick start guide
-2. **README.md** - Full documentation
-3. **NO_API_KEY_NEEDED.md** - Why you don't need API keys!
-4. **CUSTOMIZATION.md** - Make the game your own
-5. **DEPLOYMENT.md** - Put your game online
+## 🎓 YOUR FIRST FLIGHT
 
----
+### 1. Taking Off
+- You start in the air already flying
+- Press **SHIFT** to increase speed
+- Press **S** to climb higher
+- Keep wings level (don't roll)
 
-## 🎨 QUICK CUSTOMIZATIONS
+### 2. Turning
+- Press **A** or **D** to roll
+- Gently press **S** to pull through the turn
+- Level wings when facing your direction
 
-### Change Speed
-`src/game/Player.js` line 13:
-```javascript
-this.maxSpeed = 0.0002;  // Double speed!
+### 3. Exploring
+- Fly high (2,000+ ft) for overview
+- Fly low (200-500 ft) to see buildings
+- Don't go below 50 ft! (terrain!)
+
+### 4. Speed Control
+- **SHIFT** = Speed up
+- **CTRL** = Slow down
+- Sweet spot: 60-80 knots
+
+## 🎮 WHAT'S INCLUDED?
+
+### 📁 Documentation
+1. **README.md** - Complete guide
+2. **FLIGHT_GUIDE.md** - How to fly (beginners)
+3. **FLIGHT_SIMULATOR.md** - What's new
+4. **CESIUM_INFO.md** - About the tech
+5. **START_HERE.txt** - Quick reference
+
+### 🗂️ File Structure
 ```
-
-### Change Starting Location
-`src/main.js` line 11 - add cities:
-```javascript
-{ name: '🏠 My Home', coords: [lng, lat], zoom: 16 },
+around-us-flight-simulator/
+├── src/
+│   ├── main.js              ← Main game loop
+│   └── game/
+│       ├── Aircraft.js      ← Flight physics
+│       ├── FlightCamera.js  ← Camera system
+│       └── FlightControls.js ← Input handling
+├── index.html               ← UI and HUD
+├── package.json             ← Dependencies
+└── Documentation            ← Guides (you are here!)
 ```
-
-### Change Map Style
-`src/main.js` line 53:
-```javascript
-style: 'mapbox://styles/mapbox/satellite-v9'  // Satellite view!
-```
-
-### Change Colors
-`index.html` - CSS section - change colors in gradients and backgrounds
-
----
-
-## 🌐 SHARE YOUR GAME
-
-Want to put it online? (Free!)
-
-**Easiest: Vercel**
-```bash
-npm install -g vercel
-npm run build
-vercel
-```
-
-See **DEPLOYMENT.md** for more options!
-
----
 
 ## ❓ TROUBLESHOOTING
 
-### "Map failed to load"
-- Check your internet connection
+### Terrain not loading
+- Check internet connection
+- Cesium Ion may be temporarily down
 - Try refreshing the page
-- Check browser console (F12) for errors
 
-### Controls don't work
-- Click on the game window to focus it
-- Make sure you clicked "PLAY NOW"
+### Controls feel weird
+- Remember: aircraft have momentum!
+- Small inputs work better
+- Practice makes perfect
 
-### Game is slow
-- Try reducing browser window size
-- Close other tabs
+### Too fast/slow
+- Use SHIFT/CTRL to adjust throttle
+- Watch your airspeed indicator
+- 60-80 knots is comfortable cruise
 
-### Need more help?
-- Check browser console (F12)
-- Read README.md for details
-- Uses FREE OpenStreetMap - no registration needed!
-
----
-
-## 🎯 WHAT'S NEXT?
-
-1. ✅ Install dependencies
-2. ✅ Run the game
-3. ✅ Explore different cities
-4. ✅ Customize the game (see CUSTOMIZATION.md)
-5. ✅ Deploy online (see DEPLOYMENT.md)
-6. ✅ Share with friends!
-
-**No API keys, no credit cards, no hassle!** 🎉
-
----
+### Can't see the aircraft
+- The 3D model may still be loading
+- Camera works even without visible plane
+- Give it a few seconds
 
 ## 💡 PRO TIPS
 
-- Press F12 to see console logs and debug
-- The distance tracker shows how far you've traveled
-- Try different times of day for different lighting
-- Zoom in on the map before starting for better detail
-- Satellite view is awesome but can be slower
+1. **Start Simple:** Just fly straight and level first
+2. **Small Inputs:** Gentle control movements work best
+3. **Watch Your Speed:** Don't stall (below 20 kts)!
+4. **Explore Different Altitudes:** Each height offers different views
+5. **Read FLIGHT_GUIDE.md:** Detailed flying techniques inside!
 
----
+## 🎯 CHALLENGES TO TRY
 
-## 📞 SUPPORT
+Once you're comfortable:
+- ✅ Complete a full 360° circle
+- ✅ Fly at exactly 1,000 ft for 1 minute
+- ✅ Navigate between buildings
+- ✅ Low-level flight (200 ft)
+- ✅ Reach maximum speed
+- ✅ Try a barrel roll!
 
-This is a simple, open-source project. If you need help:
-- Read the included documentation
-- Check Mapbox documentation: https://docs.mapbox.com
-- Remember: the free tier gives you 50,000 map loads/month!
+## 🔧 OPTIONAL: Get Your Own Cesium Token
 
----
+The simulator includes a FREE default token that works great!
+
+But if you want your own (also FREE):
+1. Go to cesium.com/ion/signup
+2. Sign up (no credit card!)
+3. Copy your token
+4. Replace in `src/main.js` line 7
+
+**Free tier:** 50,000 tile requests/month = 20+ hours of flying!
+
+## 🌟 WHAT'S NEXT?
+
+1. ✅ Master basic flight
+2. ✅ Explore all 10 locations
+3. ✅ Try aerobatics
+4. ✅ Add more cities (see README.md)
+5. ✅ Customize aircraft physics
+6. ✅ Share with friends!
 
 ## ⭐ CREDITS
 
-**Project:** Around_Us
-**Created by:** eeman majumder (eeman1113)
-**Built with:** 
-- MapLibre GL JS (open source maps)
-- OpenStreetMap (free map data)
+**Project:** Around_Us Flight Simulator  
+**Created by:** eeman majumder (eeman1113)  
+**Built with:**
+- Cesium (3D globe)
+- CesiumJS (rendering)
 - Vite (build tool)
-- JavaScript (game logic)
+- JavaScript (physics)
 
-**Map Data:** © OpenStreetMap Contributors
-
----
-
-## 📄 LICENSE
-
-MIT License - Free to use, modify, and share!
-See LICENSE file for details.
+**3D Terrain:** © Cesium Ion  
+**Buildings:** OpenStreetMap Contributors
 
 ---
 
-**🎉 NOW GO EXPLORE THE WORLD! 🌍**
+## 🛫 READY FOR TAKEOFF?
 
-Run `npm run dev` and have fun!
+1. Run `npm install`
+2. Run `npm run dev`
+3. Choose location
+4. Click "TAKE OFF!"
+5. **FLY!** ✈️
 
----
+**Happy flying!** 🌍
 
-### File Structure
-```
-around-us/
-├── src/
-│   ├── main.js              ← Main game logic
-│   └── game/
-│       ├── Player.js        ← Player movement
-│       ├── Camera.js        ← Camera follow
-│       └── InputManager.js  ← Keyboard controls
-├── index.html               ← UI and styling
-├── package.json             ← Dependencies
-├── vite.config.js           ← Build config
-├── START_HERE.txt           ← Quick start (this file)
-├── README.md                ← Full documentation
-├── NO_API_KEY_NEEDED.md     ← Why no tokens needed!
-├── CUSTOMIZATION.md         ← Customization guide
-├── DEPLOYMENT.md            ← Deploy online
-└── LICENSE                  ← MIT License
-```
-
----
-
-**Happy exploring! 🚀**
+For detailed flight instructions, see **FLIGHT_GUIDE.md**  
+For technical info, see **CESIUM_INFO.md**  
+For everything else, see **README.md**

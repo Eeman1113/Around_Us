@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Around_Us - Explore the World</title>
-    <link href='https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.css' rel='stylesheet' />
+    <title>Around_Us Flight Simulator - Fly Around the World!</title>
     <style>
         * {
             margin: 0;
@@ -13,32 +12,31 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
-            background: #000;
         }
 
-        #map {
+        #cesiumContainer {
+            width: 100vw;
+            height: 100vh;
             position: absolute;
             top: 0;
-            bottom: 0;
-            width: 100%;
+            left: 0;
         }
 
         /* Intro Screen */
         #intro-screen {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease;
+            z-index: 2000;
+            transition: opacity 0.5s;
         }
 
         #intro-screen.hidden {
@@ -49,214 +47,247 @@
         .intro-content {
             text-align: center;
             color: white;
+            max-width: 600px;
+            padding: 40px;
         }
 
         .intro-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .intro-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+            font-size: 18px;
+            margin-bottom: 30px;
             opacity: 0.9;
         }
 
-        .play-button {
+        .location-selector {
+            margin: 30px 0;
+        }
+
+        .location-selector select {
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
             background: white;
             color: #667eea;
-            border: none;
-            padding: 1.5rem 3rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            outline: none;
+            min-width: 300px;
+        }
+
+        .play-button {
+            padding: 15px 50px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            background: white;
+            color: #667eea;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .play-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
         }
 
-        .credits {
-            position: absolute;
-            bottom: 2rem;
+        /* Flight Instruments HUD */
+        .hud {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
             color: white;
-            opacity: 0.7;
-            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* UI Container */
-        #ui-container {
-            position: absolute;
+        #altitude-display {
             top: 20px;
-            left: 20px;
-            z-index: 100;
-            display: none;
-        }
-
-        #ui-container.visible {
-            display: block;
-        }
-
-        .info-panel {
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
+            right: 20px;
+            font-size: 24px;
+            background: rgba(0,0,0,0.5);
             padding: 15px 20px;
             border-radius: 10px;
-            font-size: 14px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
-        .info-panel h3 {
-            margin-bottom: 10px;
-            color: #667eea;
+        #speed-display {
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            background: rgba(0,0,0,0.5);
+            padding: 15px 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
         }
 
-        .info-panel p {
-            margin: 5px 0;
+        #heading-display {
+            top: 100px;
+            left: 20px;
+            font-size: 18px;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
         }
 
-        /* Controls Info */
         #controls-info {
-            position: absolute;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 14px;
+            background: rgba(0,0,0,0.7);
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
             backdrop-filter: blur(10px);
-            z-index: 100;
-            display: none;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         #controls-info.visible {
-            display: block;
+            opacity: 1;
         }
 
-        .control-key {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 3px 8px;
-            border-radius: 3px;
-            margin: 0 3px;
+        .control-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .key {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
             font-weight: bold;
+            min-width: 30px;
+            text-align: center;
         }
 
-        /* Speed indicator */
-        #speed-indicator {
-            position: absolute;
-            top: 20px;
+        #location-display {
+            bottom: 20px;
             right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 15px 20px;
+            font-size: 14px;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 15px;
             border-radius: 10px;
-            font-size: 16px;
             backdrop-filter: blur(10px);
-            z-index: 100;
-            display: none;
-        }
-
-        #speed-indicator.visible {
-            display: block;
-        }
-
-        #speed-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #667eea;
         }
 
         /* Loading screen */
         #loading-screen {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #000;
+            background: rgba(0,0,0,0.9);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 2000;
+            z-index: 3000;
             color: white;
-            font-size: 1.5rem;
+            font-size: 24px;
         }
 
         #loading-screen.hidden {
             display: none;
+        }
+
+        .plane-emoji {
+            font-size: 48px;
+            animation: fly 2s infinite;
+        }
+
+        @keyframes fly {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
     </style>
 </head>
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen">
-        <div>Loading...</div>
+        <div>
+            <div class="plane-emoji">✈️</div>
+            <div>Loading Flight Simulator...</div>
+        </div>
     </div>
 
     <!-- Intro Screen -->
     <div id="intro-screen">
         <div class="intro-content">
-            <h1>🌍 Around_Us</h1>
-            <p>Explore the World Around You</p>
+            <h1>✈️ Around_Us</h1>
+            <p>Flight Simulator - Fly Around the World!</p>
             
-            <div style="margin: 30px 0;">
-                <label style="display: block; margin-bottom: 10px; font-size: 1.2rem;">Choose Your Starting Location:</label>
-                <select id="location-select" style="
-                    padding: 10px 20px;
-                    font-size: 1.1rem;
-                    border-radius: 10px;
-                    border: 2px solid white;
-                    background: rgba(255,255,255,0.9);
-                    cursor: pointer;
-                    min-width: 200px;
-                ">
-                    <!-- Options populated by JavaScript -->
+            <div class="location-selector">
+                <select id="location-select">
+                    <option value="">Choose Your Starting Location</option>
                 </select>
             </div>
             
-            <button class="play-button" id="play-button">PLAY NOW</button>
-        </div>
-        <div class="credits">
-            Created by eeman majumder (eeman1113)
-        </div>
-    </div>
-
-    <!-- Map Container -->
-    <div id="map"></div>
-
-    <!-- UI Container -->
-    <div id="ui-container">
-        <div class="info-panel">
-            <h3>Explorer Stats 📊</h3>
-            <p>Distance: <span id="distance-traveled" style="color: #667eea; font-weight: bold;">0.00</span> km</p>
-            <p style="margin-top: 10px; font-size: 12px; opacity: 0.8;">Use arrow keys or WASD to explore!</p>
+            <button class="play-button" onclick="window.game.startFlight()">
+                🛫 TAKE OFF!
+            </button>
+            
+            <p style="margin-top: 30px; font-size: 14px; opacity: 0.7;">
+                Created by eeman majumder (eeman1113)
+            </p>
         </div>
     </div>
 
-    <!-- Speed Indicator -->
-    <div id="speed-indicator">
-        <div>Speed</div>
-        <div id="speed-value">0</div>
-        <div>km/h</div>
+    <!-- Cesium Container -->
+    <div id="cesiumContainer"></div>
+
+    <!-- HUD Elements -->
+    <div id="altitude-display" class="hud">
+        <div>ALTITUDE</div>
+        <div id="altitude-value" style="font-size: 32px;">0 ft</div>
     </div>
 
-    <!-- Controls Info -->
-    <div id="controls-info">
-        <span class="control-key">W/↑</span> Forward
-        <span class="control-key">S/↓</span> Backward
-        <span class="control-key">A/←</span> Left
-        <span class="control-key">D/→</span> Right
-        <span class="control-key">SPACE</span> Jump/Brake
-        <span class="control-key">E</span> Enter/Exit Vehicle
+    <div id="speed-display" class="hud">
+        <div>AIRSPEED</div>
+        <div id="speed-value" style="font-size: 32px;">0 kts</div>
+    </div>
+
+    <div id="heading-display" class="hud">
+        <div>HEADING: <span id="heading-value">000°</span></div>
+        <div>PITCH: <span id="pitch-value">0°</span></div>
+        <div>ROLL: <span id="roll-value">0°</span></div>
+    </div>
+
+    <div id="controls-info" class="hud">
+        <div style="margin-bottom: 10px; font-size: 16px;">✈️ FLIGHT CONTROLS ✈️</div>
+        <div class="control-row">
+            <div class="control-item"><span class="key">W</span> Pitch Down</div>
+            <div class="control-item"><span class="key">S</span> Pitch Up</div>
+            <div class="control-item"><span class="key">A</span> Roll Left</div>
+            <div class="control-item"><span class="key">D</span> Roll Right</div>
+        </div>
+        <div class="control-row">
+            <div class="control-item"><span class="key">Q</span> Yaw Left</div>
+            <div class="control-item"><span class="key">E</span> Yaw Right</div>
+            <div class="control-item"><span class="key">SHIFT</span> Speed Up</div>
+            <div class="control-item"><span class="key">CTRL</span> Slow Down</div>
+        </div>
+    </div>
+
+    <div id="location-display" class="hud">
+        <div id="location-name">Ready for takeoff!</div>
     </div>
 
     <script type="module" src="/src/main.js"></script>

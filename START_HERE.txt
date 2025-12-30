@@ -1,54 +1,49 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║                                                                ║
-║   🌍  AROUND_US - EXPLORE THE WORLD  🌍                       ║
+║   ✈️  AROUND_US FLIGHT SIMULATOR  ✈️                          ║
 ║                                                                ║
+║   Fly around the world in 3D with real terrain!               ║
 ║   Created by: eeman majumder (eeman1113)                      ║
 ║                                                                ║
 ╚════════════════════════════════════════════════════════════════╝
 
-👋 WELCOME! Here's how to get started:
-
 📋 WHAT YOU NEED:
    1. Node.js installed (download from nodejs.org)
-   2. 2 minutes of your time
-   3. That's it! No API keys or credit cards!
+   2. Internet connection (for 3D terrain)
+   3. That's it! FREE Cesium token included!
 
-🚀 QUICK START (2 steps):
+🚀 QUICK START (2 STEPS):
 
    Step 1: Install dependencies
    ─────────────────────────────
-   Open terminal/command prompt in this folder and run:
-   
    npm install
 
-   Step 2: Play!
+   Step 2: Take off!
    ─────────────────────────────
-   Run:
-   
    npm run dev
    
-   The game will open in your browser automatically!
-   
-   ✨ NO API keys, NO registration, NO credit card needed! ✨
+   • Choose starting location
+   • Click "TAKE OFF"
+   • Start flying!
 
-🎮 CONTROLS:
-   W/↑     - Move forward
-   S/↓     - Move backward
-   A/←     - Turn left
-   D/→     - Turn right
-   SPACE   - Jump
+✈️ FLIGHT CONTROLS:
+   • W/S: Pitch (nose up/down)
+   • A/D: Roll (bank left/right)
+   • Q/E: Yaw (turn left/right)
+   • SHIFT: Speed up
+   • CTRL: Slow down
 
 💡 TIPS:
-   • Explore 56+ cities across 6 continents!
-   • Change starting location in src/main.js
-   • Try different map styles (satellite, dark, light)
-   • Adjust player speed in src/game/Player.js
+   • Explore 10 locations with REAL 3D terrain
+   • Fly over 3D buildings in major cities
+   • Track altitude, speed, and orientation
+   • Works with FREE Cesium Ion token (no credit card!)
 
 📖 NEED HELP?
    • Check README.md for full documentation
-   • Uses FREE OpenStreetMap data - no registration needed!
-   • Open an issue on GitHub
-
-🎉 HAVE FUN EXPLORING!
+   • See FLIGHT_GUIDE.md for flight tips
+   • Uses FREE Cesium Ion with generous free tier!
 
 ═══════════════════════════════════════════════════════════════════
+
+                Ready for takeoff? 🛫

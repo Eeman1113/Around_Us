@@ -1,7 +1,7 @@
 {
-  "name": "around-us",
+  "name": "around-us-flight-simulator",
   "version": "1.0.0",
-  "description": "Around_Us - A simple 3D exploration game - Just play and have fun!",
+  "description": "Around_Us Flight Simulator - Fly around the world in 3D!",
   "author": "eeman majumder (eeman1113)",
   "scripts": {
     "dev": "vite",
@@ -9,9 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "maplibre-gl": "^4.0.0"
+    "cesium": "^1.120.0"
   },
   "devDependencies": {
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vite-plugin-cesium": "^1.2.22"
   }
 }

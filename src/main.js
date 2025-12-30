@@ -1,11 +1,10 @@
-import mapboxgl from 'mapbox-gl';
+import maplibregl from 'maplibre-gl';
 import { Player } from './game/Player.js';
 import { Camera } from './game/Camera.js';
 import { InputManager } from './game/InputManager.js';
 
-// Mapbox token - You'll need to replace this with your own token from mapbox.com
-// Get a free token at: https://account.mapbox.com/access-tokens/
-mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZSIsImEiOiJjbGV4YW1wbGUifQ.example';
+// NO API KEY NEEDED! 🎉
+// Using free OpenStreetMap tiles - completely free, no credit card, no registration!
 
 // Amazing locations to explore around the world!
 const LOCATIONS = [
@@ -129,10 +128,31 @@ class Game {
         document.getElementById('controls-info').classList.add('visible');
         document.getElementById('speed-indicator').classList.add('visible');
         
-        // Initialize map at selected location
-        this.map = new mapboxgl.Map({
+        // Initialize map at selected location with FREE OpenStreetMap tiles!
+        this.map = new maplibregl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v12',
+            style: {
+                version: 8,
+                sources: {
+                    'osm': {
+                        type: 'raster',
+                        tiles: [
+                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+                        ],
+                        tileSize: 256,
+                        attribution: '&copy; OpenStreetMap Contributors'
+                    }
+                },
+                layers: [
+                    {
+                        id: 'osm',
+                        type: 'raster',
+                        source: 'osm',
+                        minzoom: 0,
+                        maxzoom: 22
+                    }
+                ]
+            },
             center: this.selectedLocation.coords,
             zoom: this.selectedLocation.zoom,
             pitch: 60,
@@ -142,9 +162,6 @@ class Game {
 
         this.map.on('load', () => {
             console.log('Map loaded');
-            
-            // Add 3D buildings
-            this.add3DBuildings();
             
             // Initialize game systems
             this.inputManager = new InputManager();
@@ -162,7 +179,7 @@ class Game {
 
         this.map.on('error', (e) => {
             console.error('Map error:', e);
-            alert('Failed to load map. Please check your Mapbox token in src/main.js\n\nSee MAPBOX_TOKEN_GUIDE.md for instructions!');
+            // Map should work fine with free OSM tiles!
         });
     }
 
@@ -193,48 +210,6 @@ class Game {
             welcomeMsg.style.opacity = '0';
             setTimeout(() => welcomeMsg.remove(), 500);
         }, 3000);
-    }
-
-    add3DBuildings() {
-        // Add 3D building layer
-        const layers = this.map.getStyle().layers;
-        const labelLayerId = layers.find(
-            (layer) => layer.type === 'symbol' && layer.layout['text-field']
-        )?.id;
-
-        this.map.addLayer(
-            {
-                id: '3d-buildings',
-                source: 'composite',
-                'source-layer': 'building',
-                filter: ['==', 'extrude', 'true'],
-                type: 'fill-extrusion',
-                minzoom: 15,
-                paint: {
-                    'fill-extrusion-color': '#aaa',
-                    'fill-extrusion-height': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        15,
-                        0,
-                        15.05,
-                        ['get', 'height']
-                    ],
-                    'fill-extrusion-base': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        15,
-                        0,
-                        15.05,
-                        ['get', 'min_height']
-                    ],
-                    'fill-extrusion-opacity': 0.6
-                }
-            },
-            labelLayerId
-        );
     }
 
     gameLoop() {

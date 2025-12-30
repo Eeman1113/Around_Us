@@ -2,21 +2,37 @@
 
 Make this game truly yours! Here are fun ways to customize it.
 
-## 🗺️ Change Map Styles
+## 🗺️ Change Map Tiles
 
-Edit `src/main.js`, line 53:
+The game uses OpenStreetMap tiles by default. You can change to other free tile providers!
 
+Edit `src/main.js`, find the map initialization, and change the `tiles` array:
+
+**Default - OpenStreetMap:**
 ```javascript
-style: 'mapbox://styles/mapbox/streets-v12'
+tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png']
 ```
 
-Try these styles:
-- `mapbox://styles/mapbox/streets-v12` - Default (colorful streets)
-- `mapbox://styles/mapbox/dark-v11` - Dark mode
-- `mapbox://styles/mapbox/light-v11` - Light mode
-- `mapbox://styles/mapbox/satellite-v9` - Satellite view
-- `mapbox://styles/mapbox/satellite-streets-v12` - Satellite with labels
-- `mapbox://styles/mapbox/outdoors-v12` - Outdoor/hiking maps
+**Try these free alternatives:**
+
+```javascript
+// OpenTopoMap (topographic style)
+tiles: ['https://tile.opentopomap.org/{z}/{x}/{y}.png']
+
+// Stamen Terrain (terrain style)
+tiles: ['https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg']
+
+// Stamen Watercolor (artistic style)
+tiles: ['https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg']
+
+// CartoDB Positron (light style)
+tiles: ['https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png']
+
+// CartoDB Dark Matter (dark style)
+tiles: ['https://cartodb-basemaps-a.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png']
+```
+
+**All of these are FREE with no API key!**
 
 ## 🏃 Adjust Player Speed
 
@@ -164,16 +180,6 @@ Edit `src/game/Player.js`, line 55:
 this.jumpVelocity = 10;  // Higher = higher jumps (try 20!)
 ```
 
-### Time of Day
-Edit `src/main.js`, change map style based on time:
-
-```javascript
-const hour = new Date().getHours();
-const style = hour >= 6 && hour <= 18 
-    ? 'mapbox://styles/mapbox/streets-v12'    // Day
-    : 'mapbox://styles/mapbox/dark-v11';       // Night
-```
-
 ## 🎵 Add Sounds
 
 1. Add audio files to `public/sounds/`
@@ -212,19 +218,18 @@ body {
 
 ## 💡 Advanced Ideas
 
-### Add a Day/Night Cycle
+### Add Different Map Styles
+Switch between different free tile providers:
 ```javascript
-setInterval(() => {
-    const styles = [
-        'mapbox://styles/mapbox/streets-v12',
-        'mapbox://styles/mapbox/dark-v11'
-    ];
-    this.map.setStyle(styles[Math.floor(Math.random() * 2)]);
-}, 60000); // Change every minute
+const styles = [
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    'https://cartodb-basemaps-a.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'
+];
+// Switch styles dynamically
 ```
 
-### Add Weather Effects
-Use Mapbox's fog and sky layer API
+### Add Weather Overlay
+Use free weather APIs to show weather on the map
 
 ### Add Multiplayer
 Use WebSockets or WebRTC (advanced)
@@ -236,6 +241,7 @@ Use WebSockets or WebRTC (advanced)
 - Check the console for errors: `F12` > Console
 - Test changes incrementally
 - Keep backups of working code
-- Search for Mapbox GL JS docs for map features
+- Search for MapLibre GL JS docs for map features
+- All map tiles are free - no API keys needed!
 
 **Have fun customizing!** 🎨🎮

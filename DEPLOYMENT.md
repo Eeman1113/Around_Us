@@ -104,11 +104,10 @@ firebase deploy
 
 ## Important Notes
 
-### Mapbox Token Security
-- Your public Mapbox token is meant to be public
-- However, you can add URL restrictions in your Mapbox dashboard
-- Go to: Account > Access Tokens > Click your token
-- Add allowed URLs to prevent abuse
+### No API Keys Needed!
+- This app uses free OpenStreetMap tiles
+- No tokens, no rate limits, no tracking
+- Deploy anywhere without worrying about API costs!
 
 ### Custom Domain
 Most hosting services allow custom domains:
@@ -132,13 +131,13 @@ Most hosting services allow custom domains:
 
 ### Game doesn't work after deployment
 - Check browser console for errors
-- Verify Mapbox token is set correctly
 - Make sure the build was successful
+- Verify map tiles are loading
 
-### Getting rate limited
-- Mapbox free tier: 50,000 map loads/month
-- This is usually more than enough
-- Upgrade if needed on mapbox.com
+### Performance Tips
+- The build command optimizes your game automatically
+- Gzip is usually enabled by hosting services
+- No API rate limits to worry about!
 
 ---
 

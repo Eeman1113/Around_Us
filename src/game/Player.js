@@ -1,3 +1,5 @@
+import maplibregl from 'maplibre-gl';
+
 export class Player {
     constructor(map, startPosition) {
         this.map = map;
@@ -31,7 +33,7 @@ export class Player {
         el.style.border = '3px solid white';
         el.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
         
-        return new mapboxgl.Marker(el)
+        return new maplibregl.Marker(el)
             .setLngLat([this.position.lng, this.position.lat])
             .addTo(this.map);
     }

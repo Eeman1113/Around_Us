@@ -9,8 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "mapbox-gl": "^2.15.0",
-    "three": "^0.160.0"
+    "maplibre-gl": "^4.0.0"
   },
   "devDependencies": {
     "vite": "^5.0.0"

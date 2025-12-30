@@ -1,17 +1,18 @@
 # 🌍 Around_Us
 
-A fun, simple 3D exploration game built with Mapbox GL JS. No login, no multiplayer, no BS - just explore and have fun!
+A fun, simple 3D exploration game built with MapLibre GL and OpenStreetMap. **No API keys, no credit card, no registration needed** - just install and play!
 
 **Created by:** eeman majumder (eeman1113)
 
 ## ✨ Features
 
 - 🎮 Simple and intuitive controls
-- 🗺️ Explore real-world 3D cities
+- 🗺️ Explore real-world maps
 - 🌍 **56+ cities across 6 continents**
 - 🏃 Walk and run around
 - 🚗 Smooth camera movement
 - 🎯 No login or registration needed
+- 💳 **NO credit card or API keys required!**
 - 🌟 Just open and play!
 
 ## 🎮 Controls
@@ -50,7 +51,7 @@ Cape Town, Cairo, Nairobi, Lagos, Marrakech
 
 - Node.js (version 14 or higher)
 - npm or yarn
-- A Mapbox account (free)
+- **That's it! No API keys needed!**
 
 ### Setup Instructions
 
@@ -59,31 +60,16 @@ Cape Town, Cairo, Nairobi, Lagos, Marrakech
    npm install
    ```
 
-2. **Get a Mapbox Token:**
-   - Go to [mapbox.com](https://www.mapbox.com/)
-   - Sign up for a free account
-   - Go to [Account > Access Tokens](https://account.mapbox.com/access-tokens/)
-   - Copy your default public token
-   - Open `src/main.js` and replace the `mapboxgl.accessToken` value with your token
-
-3. **Run the game:**
+2. **Run the game:**
    ```bash
    npm run dev
    ```
 
-4. **Open your browser:**
+3. **Open your browser:**
    - The game will automatically open at `http://localhost:3000`
    - Click "PLAY NOW" and start exploring!
 
-## 🏗️ Building for Production
-
-To create a production build:
-
-```bash
-npm run build
-```
-
-The built files will be in the `dist` folder. You can deploy these to any static hosting service.
+**That's it!** No API keys, no registration, no credit card needed! 🎉
 
 ## 🎨 Customization
 
@@ -111,25 +97,16 @@ this.maxSpeed = 0.0001; // Increase for faster movement
 this.rotationSpeed = 2; // Increase for faster turning
 ```
 
-### Change Map Style
-
-Edit `src/main.js` and change the map style:
-
-```javascript
-style: 'mapbox://styles/mapbox/streets-v12' // Try: satellite-v9, dark-v10, light-v10
-```
-
 ## 🐛 Troubleshooting
 
 ### Map doesn't load
-- Make sure you've added your Mapbox token in `src/main.js`
 - Check the browser console for errors
 - Verify your internet connection
+- Try refreshing the page
 
 ### Game is slow
 - Try reducing the browser window size
 - Close other browser tabs
-- Try a different map style (dark-v10 is lighter)
 
 ### Controls don't work
 - Make sure the game window has focus (click on it)
@@ -144,7 +121,8 @@ MIT License - Feel free to modify and share!
 
 **Project:** Around_Us  
 **Created by:** eeman majumder (eeman1113)  
-**Built with:** Mapbox GL JS, Three.js, Vite
+**Built with:** MapLibre GL JS, OpenStreetMap, Vite
+**Map Data:** © OpenStreetMap Contributors
 
 ---
 

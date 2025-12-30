@@ -16,28 +16,20 @@ A fun, simple 3D exploration game where you can walk around real cities in 3D!
 
 ---
 
-## 🚀 GET STARTED IN 3 STEPS
+## 🚀 GET STARTED IN 2 STEPS!
 
 ### Step 1: Install Dependencies (2 minutes)
 ```bash
 npm install
 ```
 
-### Step 2: Get Your Mapbox Token (3 minutes)
-1. Go to https://www.mapbox.com/
-2. Sign up for FREE (no credit card needed!)
-3. Get your token from https://account.mapbox.com/access-tokens/
-4. Open `src/main.js`
-5. Replace line 8 with your token:
-   ```javascript
-   mapboxgl.accessToken = 'YOUR_TOKEN_HERE';
-   ```
-
-### Step 3: Play! (30 seconds)
+### Step 2: Play! (30 seconds)
 ```bash
 npm run dev
 ```
 The game opens automatically in your browser!
+
+**That's it!** No API keys, no registration, no credit card! 🎉
 
 ---
 
@@ -72,7 +64,7 @@ We've included comprehensive guides:
 
 1. **START_HERE.txt** - You are here! Quick start guide
 2. **README.md** - Full documentation
-3. **MAPBOX_TOKEN_GUIDE.md** - Detailed token setup instructions
+3. **NO_API_KEY_NEEDED.md** - Why you don't need API keys!
 4. **CUSTOMIZATION.md** - Make the game your own
 5. **DEPLOYMENT.md** - Put your game online
 
@@ -121,34 +113,35 @@ See **DEPLOYMENT.md** for more options!
 ## ❓ TROUBLESHOOTING
 
 ### "Map failed to load"
-- Check your Mapbox token in `src/main.js`
-- Make sure you copied the entire token
-- Verify your Mapbox account is active
+- Check your internet connection
+- Try refreshing the page
+- Check browser console (F12) for errors
 
 ### Controls don't work
 - Click on the game window to focus it
 - Make sure you clicked "PLAY NOW"
 
 ### Game is slow
-- Try a lighter map style (dark-v11)
-- Reduce browser window size
+- Try reducing browser window size
 - Close other tabs
 
 ### Need more help?
 - Check browser console (F12)
 - Read README.md for details
-- All guides are in this folder
+- Uses FREE OpenStreetMap - no registration needed!
 
 ---
 
 ## 🎯 WHAT'S NEXT?
 
-1. ✅ Get your Mapbox token
+1. ✅ Install dependencies
 2. ✅ Run the game
 3. ✅ Explore different cities
 4. ✅ Customize the game (see CUSTOMIZATION.md)
 5. ✅ Deploy online (see DEPLOYMENT.md)
 6. ✅ Share with friends!
+
+**No API keys, no credit cards, no hassle!** 🎉
 
 ---
 
@@ -176,9 +169,12 @@ This is a simple, open-source project. If you need help:
 **Project:** Around_Us
 **Created by:** eeman majumder (eeman1113)
 **Built with:** 
-- Mapbox GL JS (maps)
+- MapLibre GL JS (open source maps)
+- OpenStreetMap (free map data)
 - Vite (build tool)
 - JavaScript (game logic)
+
+**Map Data:** © OpenStreetMap Contributors
 
 ---
 
@@ -209,7 +205,7 @@ around-us/
 ├── vite.config.js           ← Build config
 ├── START_HERE.txt           ← Quick start (this file)
 ├── README.md                ← Full documentation
-├── MAPBOX_TOKEN_GUIDE.md    ← Token setup help
+├── NO_API_KEY_NEEDED.md     ← Why no tokens needed!
 ├── CUSTOMIZATION.md         ← Customization guide
 ├── DEPLOYMENT.md            ← Deploy online
 └── LICENSE                  ← MIT License

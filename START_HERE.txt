@@ -10,10 +10,10 @@
 
 📋 WHAT YOU NEED:
    1. Node.js installed (download from nodejs.org)
-   2. A Mapbox account (free at mapbox.com)
-   3. 5 minutes of your time
+   2. 2 minutes of your time
+   3. That's it! No API keys or credit cards!
 
-🚀 QUICK START (3 steps):
+🚀 QUICK START (2 steps):
 
    Step 1: Install dependencies
    ─────────────────────────────
@@ -21,22 +21,15 @@
    
    npm install
 
-   Step 2: Get Mapbox Token
-   ─────────────────────────────
-   • Go to mapbox.com and sign up (FREE)
-   • Copy your token from account.mapbox.com/access-tokens
-   • Open src/main.js
-   • Replace the token on line 8 with yours
-   
-   See MAPBOX_TOKEN_GUIDE.md for detailed instructions!
-
-   Step 3: Play!
+   Step 2: Play!
    ─────────────────────────────
    Run:
    
    npm run dev
    
    The game will open in your browser automatically!
+   
+   ✨ NO API keys, NO registration, NO credit card needed! ✨
 
 🎮 CONTROLS:
    W/↑     - Move forward
@@ -53,7 +46,7 @@
 
 📖 NEED HELP?
    • Check README.md for full documentation
-   • See MAPBOX_TOKEN_GUIDE.md for token setup
+   • Uses FREE OpenStreetMap data - no registration needed!
    • Open an issue on GitHub
 
 🎉 HAVE FUN EXPLORING!

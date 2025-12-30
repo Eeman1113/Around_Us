@@ -4,7 +4,7 @@ import { FlightCamera } from './game/FlightCamera.js';
 import { FlightControls } from './game/FlightControls.js';
 
 // Cesium Ion default access token (free tier - get your own at cesium.com/ion)
-Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc5YzciLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk';
+Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MTE4ZWM5My00Yzg3LTRhYzktODZiOC0zZTdiNjQzMjU5MTYiLCJpZCI6MzczNzA3LCJpYXQiOjE3NjcwODgxODV9.Z78RNThi_Cuvt65HZ1W1k-EpJM8Otcr3z3cSkgofpw0';
 
 // Flight locations around the world
 const LOCATIONS = [

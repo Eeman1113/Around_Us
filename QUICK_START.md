@@ -11,6 +11,7 @@ A fun, simple 3D exploration game where you can walk around real cities in 3D!
 - ✅ No login required
 - ✅ No multiplayer complexity
 - ✅ No backend needed
+- ✅ **56+ cities across 6 continents**
 - ✅ Just play and explore!
 
 ---
@@ -50,19 +51,18 @@ The game opens automatically in your browser!
 
 ---
 
-## 📍 EXPLORE 8 CITIES
+## 📍 EXPLORE 56+ CITIES WORLDWIDE!
 
-Choose from:
-- 🗽 New York
-- 🗼 Paris
-- 🗾 Tokyo
-- 🏰 London
-- 🏙️ Dubai
-- 🌉 San Francisco
-- 🕌 Istanbul
-- 🏛️ Rome
+Choose from cities across 6 continents:
 
-Or add your own in `src/main.js`!
+**🌎 North America** - New York, San Francisco, Las Vegas, Chicago, LA, Miami, and more!  
+**🌍 Europe** - Paris, London, Rome, Barcelona, Berlin, Amsterdam, Istanbul, and more!  
+**🌏 Asia** - Tokyo, Hong Kong, Dubai, Singapore, Seoul, Bangkok, Mumbai, and more!  
+**🌏 Oceania** - Sydney, Melbourne, Auckland  
+**🌎 South America** - Rio, São Paulo, Buenos Aires, Lima, Bogotá  
+**🌍 Africa** - Cape Town, Cairo, Nairobi, Lagos, Marrakech
+
+**Want more?** Add your own city! See `CUSTOMIZATION.md`
 
 ---
 

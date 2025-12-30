@@ -8,6 +8,7 @@ A fun, simple 3D exploration game built with Mapbox GL JS. No login, no multipla
 
 - 🎮 Simple and intuitive controls
 - 🗺️ Explore real-world 3D cities
+- 🌍 **56+ cities across 6 continents**
 - 🏃 Walk and run around
 - 🚗 Smooth camera movement
 - 🎯 No login or registration needed
@@ -20,6 +21,28 @@ A fun, simple 3D exploration game built with Mapbox GL JS. No login, no multipla
 - **A / ←** - Turn left
 - **D / →** - Turn right
 - **SPACE** - Jump
+
+## 🌍 Explore 56+ Cities Worldwide!
+
+### 🌎 North America (10 cities)
+New York, San Francisco, Las Vegas, Chicago, Los Angeles, Miami, Austin, Toronto, Vancouver, Mexico City
+
+### 🌍 Europe (20 cities)
+Paris, London, Rome, Venice, Barcelona, Madrid, Berlin, Vienna, Amsterdam, Istanbul, Zurich, Dublin, Prague, Edinburgh, Athens, Lisbon, Copenhagen, Stockholm
+
+### 🌏 Asia (15 cities)
+Tokyo, Kyoto, Osaka, Hong Kong, Shanghai, Beijing, Singapore, Dubai, Abu Dhabi, Seoul, Bangkok, Mumbai, New Delhi, Tel Aviv, Jerusalem
+
+### 🌏 Oceania (3 cities)
+Sydney, Melbourne, Auckland
+
+### 🌎 South America (5 cities)
+Rio de Janeiro, São Paulo, Buenos Aires, Lima, Bogotá
+
+### 🌍 Africa (5 cities)
+Cape Town, Cairo, Nairobi, Lagos, Marrakech
+
+**Can't find your city?** Add it yourself! See `CUSTOMIZATION.md` for instructions.
 
 ## 🚀 Quick Start
 

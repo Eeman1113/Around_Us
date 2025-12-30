@@ -46,7 +46,7 @@
    SPACE   - Jump
 
 💡 TIPS:
-   • Explore major cities around the world!
+   • Explore 56+ cities across 6 continents!
    • Change starting location in src/main.js
    • Try different map styles (satellite, dark, light)
    • Adjust player speed in src/game/Player.js

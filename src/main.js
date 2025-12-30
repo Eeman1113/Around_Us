@@ -7,16 +7,75 @@ import { InputManager } from './game/InputManager.js';
 // Get a free token at: https://account.mapbox.com/access-tokens/
 mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZSIsImEiOiJjbGV4YW1wbGUifQ.example';
 
-// Cool locations to explore!
+// Amazing locations to explore around the world!
 const LOCATIONS = [
-    { name: '🗽 New York', coords: [-74.006, 40.7128], zoom: 16 },
-    { name: '🗼 Paris', coords: [2.2945, 48.8584], zoom: 16 },
-    { name: '🗾 Tokyo', coords: [139.6503, 35.6762], zoom: 16 },
-    { name: '🏰 London', coords: [-0.1276, 51.5074], zoom: 16 },
-    { name: '🏙️ Dubai', coords: [55.2708, 25.2048], zoom: 16 },
-    { name: '🌉 San Francisco', coords: [-122.4194, 37.7749], zoom: 16 },
-    { name: '🕌 Istanbul', coords: [28.9784, 41.0082], zoom: 16 },
-    { name: '🏛️ Rome', coords: [12.4964, 41.9028], zoom: 16 }
+    // North America
+    { name: '🗽 New York City, USA', coords: [-74.006, 40.7128], zoom: 16 },
+    { name: '🌉 San Francisco, USA', coords: [-122.4194, 37.7749], zoom: 16 },
+    { name: '🎰 Las Vegas, USA', coords: [-115.1398, 36.1699], zoom: 16 },
+    { name: '🏙️ Chicago, USA', coords: [-87.6298, 41.8781], zoom: 16 },
+    { name: '🎬 Los Angeles, USA', coords: [-118.2437, 34.0522], zoom: 16 },
+    { name: '🎸 Miami, USA', coords: [-80.1918, 25.7617], zoom: 16 },
+    { name: '🤠 Austin, USA', coords: [-97.7431, 30.2672], zoom: 16 },
+    { name: '🍁 Toronto, Canada', coords: [-79.3832, 43.6532], zoom: 16 },
+    { name: '🏔️ Vancouver, Canada', coords: [-123.1207, 49.2827], zoom: 16 },
+    { name: '🌮 Mexico City, Mexico', coords: [-99.1332, 19.4326], zoom: 16 },
+    
+    // Europe
+    { name: '🗼 Paris, France', coords: [2.2945, 48.8584], zoom: 16 },
+    { name: '🏰 London, UK', coords: [-0.1276, 51.5074], zoom: 16 },
+    { name: '🏛️ Rome, Italy', coords: [12.4964, 41.9028], zoom: 16 },
+    { name: '🍕 Venice, Italy', coords: [12.3155, 45.4408], zoom: 16 },
+    { name: '🎭 Barcelona, Spain', coords: [2.1734, 41.3851], zoom: 16 },
+    { name: '🏰 Madrid, Spain', coords: [-3.7038, 40.4168], zoom: 16 },
+    { name: '🍺 Berlin, Germany', coords: [13.4050, 52.5200], zoom: 16 },
+    { name: '🎼 Vienna, Austria', coords: [16.3738, 48.2082], zoom: 16 },
+    { name: '🧀 Amsterdam, Netherlands', coords: [4.9041, 52.3676], zoom: 16 },
+    { name: '🕌 Istanbul, Turkey', coords: [28.9784, 41.0082], zoom: 16 },
+    { name: '🏔️ Zurich, Switzerland', coords: [8.5417, 47.3769], zoom: 16 },
+    { name: '🍀 Dublin, Ireland', coords: [-6.2603, 53.3498], zoom: 16 },
+    { name: '🎨 Prague, Czech Republic', coords: [14.4378, 50.0755], zoom: 16 },
+    { name: '🏰 Edinburgh, Scotland', coords: [-3.1883, 55.9533], zoom: 16 },
+    { name: '⚡ Athens, Greece', coords: [23.7275, 37.9838], zoom: 16 },
+    { name: '🌊 Lisbon, Portugal', coords: [-9.1393, 38.7223], zoom: 16 },
+    { name: '🎪 Copenhagen, Denmark', coords: [12.5683, 55.6761], zoom: 16 },
+    { name: '🏛️ Stockholm, Sweden', coords: [18.0686, 59.3293], zoom: 16 },
+    
+    // Asia
+    { name: '🗾 Tokyo, Japan', coords: [139.6503, 35.6762], zoom: 16 },
+    { name: '⛩️ Kyoto, Japan', coords: [135.7681, 35.0116], zoom: 16 },
+    { name: '🌸 Osaka, Japan', coords: [135.5022, 34.6937], zoom: 16 },
+    { name: '🏙️ Hong Kong', coords: [114.1694, 22.3193], zoom: 16 },
+    { name: '🐉 Shanghai, China', coords: [121.4737, 31.2304], zoom: 16 },
+    { name: '🏯 Beijing, China', coords: [116.4074, 39.9042], zoom: 16 },
+    { name: '🌃 Singapore', coords: [103.8198, 1.3521], zoom: 16 },
+    { name: '🕌 Dubai, UAE', coords: [55.2708, 25.2048], zoom: 16 },
+    { name: '🕌 Abu Dhabi, UAE', coords: [54.3705, 24.4539], zoom: 16 },
+    { name: '🏙️ Seoul, South Korea', coords: [126.9780, 37.5665], zoom: 16 },
+    { name: '🏙️ Bangkok, Thailand', coords: [100.5018, 13.7563], zoom: 16 },
+    { name: '🌴 Mumbai, India', coords: [72.8777, 19.0760], zoom: 16 },
+    { name: '🏛️ New Delhi, India', coords: [77.2090, 28.6139], zoom: 16 },
+    { name: '🌊 Tel Aviv, Israel', coords: [34.7818, 32.0853], zoom: 16 },
+    { name: '🕌 Jerusalem, Israel', coords: [35.2137, 31.7683], zoom: 16 },
+    
+    // Oceania
+    { name: '🏖️ Sydney, Australia', coords: [151.2093, -33.8688], zoom: 16 },
+    { name: '🌆 Melbourne, Australia', coords: [144.9631, -37.8136], zoom: 16 },
+    { name: '🗻 Auckland, New Zealand', coords: [174.7633, -36.8485], zoom: 16 },
+    
+    // South America
+    { name: '🏖️ Rio de Janeiro, Brazil', coords: [-43.1729, -22.9068], zoom: 16 },
+    { name: '🌃 São Paulo, Brazil', coords: [-46.6333, -23.5505], zoom: 16 },
+    { name: '🏔️ Buenos Aires, Argentina', coords: [-58.3816, -34.6037], zoom: 16 },
+    { name: '🏛️ Lima, Peru', coords: [-77.0428, -12.0464], zoom: 16 },
+    { name: '🌄 Bogotá, Colombia', coords: [-74.0721, 4.7110], zoom: 16 },
+    
+    // Africa
+    { name: '🦁 Cape Town, South Africa', coords: [18.4241, -33.9249], zoom: 16 },
+    { name: '🏛️ Cairo, Egypt', coords: [31.2357, 30.0444], zoom: 16 },
+    { name: '🌍 Nairobi, Kenya', coords: [36.8219, -1.2921], zoom: 16 },
+    { name: '🏙️ Lagos, Nigeria', coords: [3.3792, 6.5244], zoom: 16 },
+    { name: '🏔️ Marrakech, Morocco', coords: [-7.9811, 31.6295], zoom: 16 }
 ];
 
 class Game {

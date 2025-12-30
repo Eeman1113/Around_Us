@@ -1,0 +1,56 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║   ✈️  AROUND_US FLIGHT SIMULATOR  ✈️                          ║
+║                                                                ║
+║   Fly around the world in 3D with real terrain!               ║
+║   Created by: eeman majumder (eeman1113)                      ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+✅  TOKEN INCLUDED - READY TO FLY!
+────────────────────────────────────────────────────────────────
+
+Your Cesium token is already configured. No setup needed!
+
+🚀 GET FLYING IN 2 STEPS:
+
+   Step 1: Install dependencies
+   ─────────────────────────────
+   npm install
+
+   Step 2: Take off!
+   ─────────────────────────────
+   npm run dev
+   
+   • Choose starting location
+   • Click "TAKE OFF"
+   • Start flying!
+
+✈️ FLIGHT CONTROLS:
+   • W/S: Pitch (nose up/down)
+   • A/D: Roll (bank left/right)  
+   • Q/E: Yaw (turn left/right)
+   • SHIFT: Speed up
+   • CTRL: Slow down
+
+🌍 EXPLORE 10 LOCATIONS:
+   • New York, Paris, Tokyo, London, Dubai
+   • San Francisco, Sydney, Rio, Cape Town, Singapore
+
+💡 TIPS:
+   • Start high (1,000 ft) for easy flying
+   • Practice gentle turns first
+   • Watch your speed (stay above 20 knots)
+   • Explore at different altitudes!
+
+📖 MORE HELP:
+   • FLIGHT_GUIDE.md - Complete flying tutorial
+   • QUICK_START.md - Detailed quick start
+   • README.md - Full documentation
+   • TOKEN_INCLUDED.md - About your Cesium token
+
+═══════════════════════════════════════════════════════════════════
+
+Ready for takeoff! 🛫
+
+Just run: npm install && npm run dev

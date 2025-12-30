@@ -7,12 +7,12 @@
 ║                                                                ║
 ╚════════════════════════════════════════════════════════════════╝
 
-📋 WHAT YOU NEED:
-   1. Node.js installed (download from nodejs.org)
-   2. Internet connection (for 3D terrain)
-   3. That's it! FREE Cesium token included!
+✅  TOKEN INCLUDED - READY TO FLY!
+────────────────────────────────────────────────────────────────
 
-🚀 QUICK START (2 STEPS):
+Your Cesium token is already configured. No setup needed!
+
+🚀 GET FLYING IN 2 STEPS:
 
    Step 1: Install dependencies
    ─────────────────────────────
@@ -28,22 +28,29 @@
 
 ✈️ FLIGHT CONTROLS:
    • W/S: Pitch (nose up/down)
-   • A/D: Roll (bank left/right)
+   • A/D: Roll (bank left/right)  
    • Q/E: Yaw (turn left/right)
    • SHIFT: Speed up
    • CTRL: Slow down
 
-💡 TIPS:
-   • Explore 10 locations with REAL 3D terrain
-   • Fly over 3D buildings in major cities
-   • Track altitude, speed, and orientation
-   • Works with FREE Cesium Ion token (no credit card!)
+🌍 EXPLORE 10 LOCATIONS:
+   • New York, Paris, Tokyo, London, Dubai
+   • San Francisco, Sydney, Rio, Cape Town, Singapore
 
-📖 NEED HELP?
-   • Check README.md for full documentation
-   • See FLIGHT_GUIDE.md for flight tips
-   • Uses FREE Cesium Ion with generous free tier!
+💡 TIPS:
+   • Start high (1,000 ft) for easy flying
+   • Practice gentle turns first
+   • Watch your speed (stay above 20 knots)
+   • Explore at different altitudes!
+
+📖 MORE HELP:
+   • FLIGHT_GUIDE.md - Complete flying tutorial
+   • QUICK_START.md - Detailed quick start
+   • README.md - Full documentation
+   • TOKEN_INCLUDED.md - About your Cesium token
 
 ═══════════════════════════════════════════════════════════════════
 
-                Ready for takeoff? 🛫
+Ready for takeoff! 🛫
+
+Just run: npm install && npm run dev

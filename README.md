@@ -4,6 +4,19 @@ Fly around the world in 3D with real terrain and buildings! Built with **Cesium*
 
 **Created by:** eeman majumder (eeman1113)
 
+## ✅ TOKEN ALREADY INCLUDED - READY TO FLY!
+
+This simulator is **pre-configured** with your Cesium token. No setup needed!
+
+```bash
+npm install
+npm run dev
+```
+
+**That's it!** Choose a location, click "TAKE OFF", and fly! 🛫
+
+---
+
 ## 🎮 What This Is
 
 A **3D flight simulator** where you can:

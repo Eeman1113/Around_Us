@@ -3,7 +3,7 @@ import { Aircraft } from './game/Aircraft.js';
 import { FlightCamera } from './game/FlightCamera.js';
 import { FlightControls } from './game/FlightControls.js';
 
-// Cesium Ion default access token (free tier - get your own at cesium.com/ion)
+// Your Cesium Ion token - ready to fly!
 Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MTE4ZWM5My00Yzg3LTRhYzktODZiOC0zZTdiNjQzMjU5MTYiLCJpZCI6MzczNzA3LCJpYXQiOjE3NjcwODgxODV9.Z78RNThi_Cuvt65HZ1W1k-EpJM8Otcr3z3cSkgofpw0';
 
 // Flight locations around the world
@@ -30,14 +30,11 @@ class FlightSimulator {
         this.isRunning = false;
         this.lastTime = null;
         
-        // Make game globally accessible for button onclick
         window.game = this;
-        
         this.init();
     }
 
     init() {
-        // Populate location dropdown
         const select = document.getElementById('location-select');
         LOCATIONS.forEach((loc, index) => {
             const option = document.createElement('option');
@@ -46,7 +43,6 @@ class FlightSimulator {
             select.appendChild(option);
         });
 
-        // Set default location
         select.value = 0;
         this.selectedLocation = LOCATIONS[0];
 
@@ -63,14 +59,13 @@ class FlightSimulator {
             return;
         }
 
-        // Hide intro screen
         document.getElementById('intro-screen').classList.add('hidden');
-        
-        // Show loading
         document.getElementById('loading-screen').classList.remove('hidden');
 
         try {
-            // Create Cesium Viewer with terrain and buildings
+            console.log('Creating Cesium viewer...');
+
+            // Create Cesium Viewer
             this.viewer = new Cesium.Viewer('cesiumContainer', {
                 terrain: Cesium.Terrain.fromWorldTerrain(),
                 shouldAnimate: true,
@@ -84,31 +79,17 @@ class FlightSimulator {
                 sceneModePicker: false,
                 selectionIndicator: false,
                 timeline: false,
-                navigationHelpButton: false,
-                skyBox: new Cesium.SkyBox({
-                    sources: {
-                        positiveX: 'https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Assets/Textures/SkyBox/tycho2t3_80_px.jpg',
-                        negativeX: 'https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Assets/Textures/SkyBox/tycho2t3_80_mx.jpg',
-                        positiveY: 'https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Assets/Textures/SkyBox/tycho2t3_80_py.jpg',
-                        negativeY: 'https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Assets/Textures/SkyBox/tycho2t3_80_my.jpg',
-                        positiveZ: 'https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Assets/Textures/SkyBox/tycho2t3_80_pz.jpg',
-                        negativeZ: 'https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Assets/Textures/SkyBox/tycho2t3_80_mz.jpg'
-                    }
-                }),
-                skyAtmosphere: new Cesium.SkyAtmosphere()
+                navigationHelpButton: false
             });
 
-            // Enable lighting
             this.viewer.scene.globe.enableLighting = true;
 
-            // Add Cesium OSM Buildings (3D buildings worldwide!)
+            console.log('Loading 3D buildings...');
             const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
             this.viewer.scene.primitives.add(osmBuildingsTileset);
 
-            // Hide loading
             document.getElementById('loading-screen').classList.add('hidden');
 
-            // Initialize game systems
             this.controls = new FlightControls();
             this.aircraft = new Aircraft(
                 this.viewer,
@@ -118,24 +99,32 @@ class FlightSimulator {
             );
             this.camera = new FlightCamera(this.viewer, this.aircraft);
 
-            // Show HUD
             document.getElementById('controls-info').classList.add('visible');
             document.getElementById('location-name').textContent = `Flying near ${this.selectedLocation.name}`;
 
-            // Hide controls after 10 seconds
             setTimeout(() => {
                 document.getElementById('controls-info').style.opacity = '0';
             }, 10000);
 
-            // Start game loop
             this.isRunning = true;
             this.lastTime = performance.now();
             this.gameLoop();
 
-            console.log('Flight started!');
+            console.log('✈️ Flight started! Use WASD + Shift/Ctrl to fly!');
         } catch (error) {
             console.error('Error starting flight:', error);
-            alert('Error loading 3D terrain. Please refresh and try again!');
+            document.getElementById('loading-screen').innerHTML = `
+                <div style="text-align: center; color: white; padding: 40px;">
+                    <h2>Error Loading Flight Simulator</h2>
+                    <p style="margin: 20px 0;">${error.message}</p>
+                    <p style="font-size: 14px; opacity: 0.8;">Check the browser console (F12) for more details</p>
+                    <button onclick="location.reload()" 
+                            style="margin-top: 20px; padding: 12px 30px; border: none; 
+                                   border-radius: 25px; background: #667eea; color: white; cursor: pointer;">
+                        Try Again
+                    </button>
+                </div>
+            `;
         }
     }
 
@@ -146,16 +135,10 @@ class FlightSimulator {
         const deltaTime = (currentTime - this.lastTime) / 1000;
         this.lastTime = currentTime;
 
-        // Update aircraft physics
         this.aircraft.update(deltaTime, this.controls);
-
-        // Update camera
         this.camera.update();
-
-        // Update HUD
         this.updateHUD();
 
-        // Continue loop
         requestAnimationFrame(() => this.gameLoop());
     }
 
@@ -164,20 +147,16 @@ class FlightSimulator {
         const velocity = this.aircraft.getVelocity();
         const orientation = this.aircraft.getOrientation();
 
-        // Altitude in feet
         const altitudeFt = Math.round(position.height * 3.28084);
         document.getElementById('altitude-value').textContent = `${altitudeFt.toLocaleString()} ft`;
 
-        // Speed in knots
         const speedKts = Math.round(velocity * 1.94384);
         document.getElementById('speed-value').textContent = `${speedKts} kts`;
 
-        // Heading, Pitch, Roll
         document.getElementById('heading-value').textContent = `${Math.round(orientation.heading)}°`;
         document.getElementById('pitch-value').textContent = `${Math.round(orientation.pitch)}°`;
         document.getElementById('roll-value').textContent = `${Math.round(orientation.roll)}°`;
     }
 }
 
-// Start the sim!
 new FlightSimulator();

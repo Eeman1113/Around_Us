@@ -3,6 +3,12 @@
 
 Welcome, pilot! Let's get you in the air! 🛫
 
+## ✅ TOKEN INCLUDED - READY TO FLY!
+
+Your Cesium token is **already configured**! No setup needed!
+
+---
+
 ## 🎯 What Is This?
 
 A **3D flight simulator** built with Cesium where you can:

@@ -1,0 +1,61 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║   🌍  AROUND_US - EXPLORE THE WORLD  🌍                       ║
+║                                                                ║
+║   Created by: eeman majumder (eeman1113)                      ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+👋 WELCOME! Here's how to get started:
+
+📋 WHAT YOU NEED:
+   1. Node.js installed (download from nodejs.org)
+   2. A Mapbox account (free at mapbox.com)
+   3. 5 minutes of your time
+
+🚀 QUICK START (3 steps):
+
+   Step 1: Install dependencies
+   ─────────────────────────────
+   Open terminal/command prompt in this folder and run:
+   
+   npm install
+
+   Step 2: Get Mapbox Token
+   ─────────────────────────────
+   • Go to mapbox.com and sign up (FREE)
+   • Copy your token from account.mapbox.com/access-tokens
+   • Open src/main.js
+   • Replace the token on line 8 with yours
+   
+   See MAPBOX_TOKEN_GUIDE.md for detailed instructions!
+
+   Step 3: Play!
+   ─────────────────────────────
+   Run:
+   
+   npm run dev
+   
+   The game will open in your browser automatically!
+
+🎮 CONTROLS:
+   W/↑     - Move forward
+   S/↓     - Move backward
+   A/←     - Turn left
+   D/→     - Turn right
+   SPACE   - Jump
+
+💡 TIPS:
+   • Explore major cities around the world!
+   • Change starting location in src/main.js
+   • Try different map styles (satellite, dark, light)
+   • Adjust player speed in src/game/Player.js
+
+📖 NEED HELP?
+   • Check README.md for full documentation
+   • See MAPBOX_TOKEN_GUIDE.md for token setup
+   • Open an issue on GitHub
+
+🎉 HAVE FUN EXPLORING!
+
+═══════════════════════════════════════════════════════════════════

@@ -1,0 +1,18 @@
+{
+  "name": "around-us",
+  "version": "1.0.0",
+  "description": "Around_Us - A simple 3D exploration game - Just play and have fun!",
+  "author": "eeman majumder (eeman1113)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "mapbox-gl": "^2.15.0",
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
